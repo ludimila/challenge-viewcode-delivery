@@ -8,32 +8,25 @@
 import UIKit
 
 final class ReviewView: UIView  {
-        
+
     var scoreLabel: UILabel {
         let label = UILabel()
-        label.textColor = .white
+        label.text = "4,8 ★★★★★"
+        label.font = .systemFont(ofSize: 13, weight: .regular)
+        label.textColor = .black
         label.numberOfLines = .zero
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }
     
-    lazy var starsStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 16.0
-        stack.alignment = .fill
-        stack.distribution = .fillEqually
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
     var countLabel: UILabel {
         let label = UILabel()
-        label.textColor = .white
+        label.text = "35100 avaliações"
+        label.font = .systemFont(ofSize: 13, weight: .regular)
+        label.textColor = .lightGray
         label.numberOfLines = .zero
         label.textAlignment = .left
-        label.backgroundColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }
@@ -41,14 +34,12 @@ final class ReviewView: UIView  {
     lazy var reviewStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.spacing = 16.0
+        stack.spacing = 60
         stack.alignment = .fill
         stack.distribution = .fillProportionally
-        stack.backgroundColor = .black
         stack.translatesAutoresizingMaskIntoConstraints = false
         
         stack.addArrangedSubview(scoreLabel)
-        stack.addArrangedSubview(starsStackView)
         stack.addArrangedSubview(countLabel)
         
         return stack
@@ -73,7 +64,6 @@ extension ReviewView: ViewCode {
     func setupConstraints() {
         setupReviewStackViewConstraints()
     }
-    
     
     func setupReviewStackViewConstraints() {
         NSLayoutConstraint.activate([
