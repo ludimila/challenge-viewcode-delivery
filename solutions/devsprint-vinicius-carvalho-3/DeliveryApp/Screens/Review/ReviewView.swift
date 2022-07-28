@@ -8,40 +8,67 @@
 import UIKit
 
 final class ReviewView: UIView  {
+        
+    private let starImageView: UIImageView = {
+        let image = UIImage(systemName: "star.fill")
+        let imageView = UIImageView(image: image)
+        imageView.clipsToBounds = false
+        imageView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        
+        imageView.tintColor = .black
+        return imageView
+    }()
 
-    var scoreLabel: UILabel {
+    
+    private let scoreLabel: UILabel = {
         let label = UILabel()
-        label.text = "4,8 ★★★★★"
         label.font = .systemFont(ofSize: 13, weight: .regular)
         label.textColor = .black
-        label.numberOfLines = .zero
-        label.textAlignment = .left
+        label.textAlignment = .center
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }
+    }()
     
-    var countLabel: UILabel {
+    private let reviewCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "35100 avaliações"
         label.font = .systemFont(ofSize: 13, weight: .regular)
         label.textColor = .lightGray
-        label.numberOfLines = .zero
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }
+    }()
     
-    lazy var reviewStackView: UIStackView = {
+    private lazy var starStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.spacing = 60
+        stack.spacing = .zero
+        stack.alignment = .center
+        stack.distribution = .fillEqually
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        stack.addArrangedSubview(starImageView)
+        stack.addArrangedSubview(starImageView2)
+
+        
+        return stack
+    }()
+    
+    private lazy var reviewStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 5
         stack.alignment = .fill
         stack.distribution = .fillProportionally
         stack.translatesAutoresizingMaskIntoConstraints = false
         
         stack.addArrangedSubview(scoreLabel)
-        stack.addArrangedSubview(countLabel)
-        
+        stack.addArrangedSubview(starStackView)
+        stack.addArrangedSubview(reviewCountLabel)
         return stack
     }()
     
@@ -51,11 +78,11 @@ final class ReviewView: UIView  {
     }
     
     func updateView(with review: Reviews) {
-        scoreLabel.text = "texto"
-        countLabel.text = "texto"
+        scoreLabel.text = String(review.score)
+        reviewCountLabel.text = String(review.count) + " avaliações"
     }
 }
-    
+
 extension ReviewView: ViewCode {
     func setupSubviews() {
         addSubview(reviewStackView)
@@ -73,5 +100,5 @@ extension ReviewView: ViewCode {
             reviewStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
-
+    
 }
