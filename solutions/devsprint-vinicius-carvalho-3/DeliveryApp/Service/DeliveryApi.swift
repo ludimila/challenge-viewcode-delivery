@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol DeliveryApiType {
+    func fetchRestaurantDetails(_ completion: @escaping (RestaurantDetails?) -> Void)
+}
+
 struct DeliveryApi {
 
     func fetchRestaurants(_ completion: @escaping ([Restaurant]?) -> Void) {
@@ -68,7 +72,9 @@ struct DeliveryApi {
 
         dataTask.resume()
     }
+}
 
+extension DeliveryApi: DeliveryApiType {
     func fetchRestaurantDetails(_ completion: @escaping (RestaurantDetails?) -> Void) {
 
         let url = URL(string: "https://raw.githubusercontent.com/devpass-tech/challenge-delivery-app/main/api/restaurant_details.json")!

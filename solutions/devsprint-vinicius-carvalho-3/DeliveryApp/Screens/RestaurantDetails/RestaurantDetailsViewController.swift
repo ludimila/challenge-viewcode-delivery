@@ -12,14 +12,18 @@ class RestaurantDetailsViewController: UIViewController {
     private let deliveryApi = DeliveryApi()
 
     private let restaurantDetailsView: RestaurantDetailsView = {
-
         let restaurantDetailsView = RestaurantDetailsView()
         return restaurantDetailsView
     }()
 
+    private let reviewView: ReviewView = {
+        let reviewView = ReviewView()
+        return reviewView
+    }()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
-
+        self.view.backgroundColor = .white
     }
 
     required init?(coder: NSCoder) {
@@ -28,19 +32,22 @@ class RestaurantDetailsViewController: UIViewController {
 
     override func loadView() {
         self.view = restaurantDetailsView
+        self.view = reviewView
     }
 
     override func viewDidLoad() {
-
-        deliveryApi.fetchRestaurantDetails { restaurantDetails in
-
-            guard let restaurantDetails = restaurantDetails else {
-                return
-            }
-
+        navigationItem.title = "Restaurant Detail"
+        fetchRestaurantDetails()
+    }
+    
+    func fetchRestaurantDetails() {
+        deliveryApi.fetchRestaurantDetails { [weak self] restaurantDetails in
+            
+            guard let restaurantDetails = restaurantDetails else { return }
+            
             DispatchQueue.main.async {
-
-                self.restaurantDetailsView.updateView(with: restaurantDetails)
+                self?.restaurantDetailsView.updateView(with: restaurantDetails)
+                self?.reviewView.updateView(with: restaurantDetails.reviews)
             }
         }
     }

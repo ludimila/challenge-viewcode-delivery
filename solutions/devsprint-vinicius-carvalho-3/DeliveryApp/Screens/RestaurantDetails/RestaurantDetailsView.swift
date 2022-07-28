@@ -7,9 +7,14 @@
 
 import UIKit
 
-class RestaurantDetailsView: UIView {
+final class RestaurantDetailsView: UIView {
+    
+    func updateView(with restaurantDetails: RestaurantDetails) {}
+    func updateView(with review: Reviews) {}
+}
 
-    func updateView(with restaurantDetails: RestaurantDetails) {
-
-    }
+extension RestaurantDetailsView: ViewCode {
+    func setupSubviews() {}
+    func setupConstraints() {}
+    
 }

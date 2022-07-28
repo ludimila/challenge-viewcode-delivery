@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190A653A288B3E5800B4279C /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190A6539288B3E5800B4279C /* ReviewView.swift */; };
 		1E2324E328871F2F00414138 /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2324E228871F2F00414138 /* ViewCode.swift */; };
 		1E2324E5288720CA00414138 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2324E4288720CA00414138 /* LoadingView.swift */; };
 		98228D7D27BC489F006A38BB /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98228D7C27BC489F006A38BB /* Address.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190A6539288B3E5800B4279C /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		1E2324E228871F2F00414138 /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 		1E2324E4288720CA00414138 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		98228D7C27BC489F006A38BB /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -105,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		190A6536288B3DA600B4279C /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				190A6539288B3E5800B4279C /* ReviewView.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
 		1E2324E128871F0F00414138 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +185,7 @@
 		983271EE272752EE0010C63A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				190A6536288B3DA600B4279C /* Review */,
 				98EA0559272A08D7007B0228 /* AddressSearch */,
 				98F12963272F307100B88A87 /* Components */,
 				983271F2272753100010C63A /* Home */,
@@ -401,6 +412,7 @@
 				98AF572627ADB16E00339A66 /* HomeView.swift in Sources */,
 				98AF572727ADB16E00339A66 /* AddressSearchViewController.swift in Sources */,
 				98AF572827ADB16E00339A66 /* AddressListView.swift in Sources */,
+				190A653A288B3E5800B4279C /* ReviewView.swift in Sources */,
 				98AF572927ADB16E00339A66 /* RestaurantListViewController.swift in Sources */,
 				98AF572A27ADB16E00339A66 /* RestaurantListView.swift in Sources */,
 				98AF572B27ADB16E00339A66 /* RestaurantDetailsViewController.swift in Sources */,

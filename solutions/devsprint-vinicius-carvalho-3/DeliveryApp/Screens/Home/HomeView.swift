@@ -24,12 +24,14 @@ final class HomeView: UIView {
         addressView.translatesAutoresizingMaskIntoConstraints = false
         return addressView
     }()
+    let navigation = UINavigationController()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(RestaurantCell.self, forCellReuseIdentifier: self.restaurantCellIdentifier)
         tableView.dataSource = self
+        tableView.delegate = self
         return tableView
     }()
 
@@ -91,5 +93,11 @@ extension HomeView: UITableViewDataSource {
         cell.updateCell(with: restaurants[indexPath.row])
         
         return cell
+    }
+}
+extension HomeView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let restaurantDetailsViewController = RestaurantDetailsViewController()
+        navigation.pushViewController(restaurantDetailsViewController, animated: false)
     }
 }
